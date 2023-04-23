@@ -85,10 +85,26 @@ struct WorkoutView: View {
     //MARK: Functions
     func removeRows(at offsets: IndexSet) {
         
-        //What item(s) were swiped?
-        for offset in offsets {
-            print(offset)
+        Task {
+            try await db!.transaction { core in
+                var idList = ""
+                for offset in offsets {
+                    idList += "\(workoutItems.results[offset].id),"
+                }
+                
+                print(idList)
+                idList.removeLast()
+                print(idList)
+                
+                try core.query("DELETE FROM WorkoutItem WHERE id IN (?)",
+                idList)
+            }
         }
+        
+//        //What item(s) were swiped?
+//        for offset in offsets {
+//            print(offset)
+//        }
     }
 }
 
