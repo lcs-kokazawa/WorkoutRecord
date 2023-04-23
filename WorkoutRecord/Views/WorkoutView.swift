@@ -35,7 +35,7 @@ struct WorkoutView: View {
                 }
                 .padding(20)
                 
-                List(excistingWorkoutItem.results) { currentItem in
+                List(WorkoutItems) { currentItem in
                     Label(title:  {
                         Text(currentItem.description)
                     }, icon: {
@@ -45,10 +45,11 @@ struct WorkoutView: View {
                             Image(systemName: "circle")
                         }
                     })
+                }
+                
             }
-            
+            .navigationTitle("Workout List")
         }
-        .navigationTitle("Workout List")
     }
 }
 
@@ -57,3 +58,4 @@ struct WorkoutView_Previews: PreviewProvider {
         WorkoutView()
     }
 }
+
