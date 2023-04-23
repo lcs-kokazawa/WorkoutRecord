@@ -10,6 +10,10 @@ import SwiftUI
 struct WorkoutView: View {
     //MARK: Stored properties
     
+    //Access the conncetion to the database (needed to add a new recoed
+    @Environment(\.blackbirdDatabase) var db:
+    Blackbird.Database?
+    
     //The list of items to be completed
     @BlackbirdLiveModels({ db in
         try await WorkoutItem.read(from: db)
@@ -18,6 +22,8 @@ struct WorkoutView: View {
     
     //The workout currently being added
     @State var newworkDescription: String = ""
+    
+    
     //MARK: Compited properties
     var body: some View {
         NavigationView {
@@ -25,6 +31,15 @@ struct WorkoutView: View {
                 HStack {
                     TextField("Enter a workout", text: $newworkDescription)
                     Button(action: {
+                        
+                        Task {
+                            //Write to database
+                            try await db!.transaction {core in
+                                try core.query("INSERT INTO TodoItem (Description VALUE (?)", newworkDescription)
+                            }
+                            
+                            newworkDescription = ""
+                        }
 //                        let lastId = workoutItems.last!.id
 //
 //                        let newId = lastId + 1
