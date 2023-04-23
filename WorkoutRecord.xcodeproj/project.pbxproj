@@ -14,6 +14,7 @@
 		F7C280CD29F4C9D700443F05 /* WorkoutItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C280CC29F4C9D700443F05 /* WorkoutItem.swift */; };
 		F7C280D029F4CFA400443F05 /* db.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = F7C280CF29F4CFA400443F05 /* db.sqlite */; };
 		F7C280D329F4CFC400443F05 /* Blackbird in Frameworks */ = {isa = PBXBuildFile; productRef = F7C280D229F4CFC400443F05 /* Blackbird */; };
+		F7C280D629F4D05F00443F05 /* AppDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C280D529F4D05F00443F05 /* AppDatabase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		F7C280C929F4C77400443F05 /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
 		F7C280CC29F4C9D700443F05 /* WorkoutItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutItem.swift; sourceTree = "<group>"; };
 		F7C280CF29F4CFA400443F05 /* db.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = db.sqlite; sourceTree = "<group>"; };
+		F7C280D529F4D05F00443F05 /* AppDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDatabase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 		F7C280B929F4C6C100443F05 /* WorkoutRecord */ = {
 			isa = PBXGroup;
 			children = (
+				F7C280D429F4D00000443F05 /* HHelpersHelpers */,
 				F7C280BA29F4C6C100443F05 /* WorkoutRecordApp.swift */,
 				F7C280C829F4C74400443F05 /* Views */,
 				F7C280CB29F4C9AE00443F05 /* Model */,
@@ -89,6 +92,14 @@
 				F7C280CC29F4C9D700443F05 /* WorkoutItem.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		F7C280D429F4D00000443F05 /* HHelpersHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				F7C280D529F4D05F00443F05 /* AppDatabase.swift */,
+			);
+			path = HHelpersHelpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,6 +181,7 @@
 			files = (
 				F7C280CD29F4C9D700443F05 /* WorkoutItem.swift in Sources */,
 				F7C280CA29F4C77400443F05 /* WorkoutView.swift in Sources */,
+				F7C280D629F4D05F00443F05 /* AppDatabase.swift in Sources */,
 				F7C280BB29F4C6C100443F05 /* WorkoutRecordApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
