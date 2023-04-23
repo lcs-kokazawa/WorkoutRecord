@@ -33,9 +33,10 @@ struct WorkoutView: View {
                     Button(action: {
                         
                         Task {
-                            //Write to database
-                            try await db!.transaction {core in
-                                try core.query("INSERT INTO TodoItem (Description VALUE (?)", newworkDescription)
+                            try await db!.transaction { core in
+                                try core.query("INSERT INTO WorkoutItem (description) VALUES (?)", newworkDescription)
+                                
+                            
                             }
                             
                             newworkDescription = ""
@@ -46,7 +47,7 @@ struct WorkoutView: View {
                         //
                         //                        let newWorkoutItem = WorkoutItem(id: newId, description: newworkDescription, completed: false)
                     }, label: {
-                        Text("Add")
+                        Text("ADD")
                             .font(.caption)
                     })
                 }
@@ -66,19 +67,27 @@ struct WorkoutView: View {
                         .onTapGesture {
                             Task {
                                 try await db!.transaction { core in
-                                    try core.query("UPDATE TodoItem SET completed = (?) WHERE id = (?)",
+                                    try core.query("UPDATE WorkoutItem SET completed = (?) WHERE id = (?)",
                                                    !currentItem.completed,
                                                    currentItem.id)
                                 }
                             }
                         }
                     }
+                    .onDelete(perform: removeRows)
                 }
-                
-                
                 
             }
             .navigationTitle("Workout List")
+        }
+    }
+    
+    //MARK: Functions
+    func removeRows(at offsets: IndexSet) {
+        
+        //What item(s) were swiped?
+        for offset in offsets {
+            print(offset)
         }
     }
 }
@@ -86,6 +95,7 @@ struct WorkoutView: View {
 struct WorkoutView_Previews: PreviewProvider {
     static var previews: some View {
         WorkoutView()
+            .environment(\.blackbirdDatabase, AppDatabase.instance)
     }
 }
 

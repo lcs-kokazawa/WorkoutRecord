@@ -12,9 +12,9 @@
 		F7C280C229F4C6C400443F05 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7C280C129F4C6C400443F05 /* Preview Assets.xcassets */; };
 		F7C280CA29F4C77400443F05 /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C280C929F4C77400443F05 /* WorkoutView.swift */; };
 		F7C280CD29F4C9D700443F05 /* WorkoutItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C280CC29F4C9D700443F05 /* WorkoutItem.swift */; };
-		F7C280D029F4CFA400443F05 /* db.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = F7C280CF29F4CFA400443F05 /* db.sqlite */; };
 		F7C280D329F4CFC400443F05 /* Blackbird in Frameworks */ = {isa = PBXBuildFile; productRef = F7C280D229F4CFC400443F05 /* Blackbird */; };
 		F7C280D629F4D05F00443F05 /* AppDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C280D529F4D05F00443F05 /* AppDatabase.swift */; };
+		F7C280D829F4E3E500443F05 /* db.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = F7C280D729F4E3E500443F05 /* db.sqlite */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,8 +24,8 @@
 		F7C280C129F4C6C400443F05 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F7C280C929F4C77400443F05 /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
 		F7C280CC29F4C9D700443F05 /* WorkoutItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutItem.swift; sourceTree = "<group>"; };
-		F7C280CF29F4CFA400443F05 /* db.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = db.sqlite; sourceTree = "<group>"; };
 		F7C280D529F4D05F00443F05 /* AppDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDatabase.swift; sourceTree = "<group>"; };
+		F7C280D729F4E3E500443F05 /* db.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = db.sqlite; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +88,7 @@
 		F7C280CB29F4C9AE00443F05 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F7C280CF29F4CFA400443F05 /* db.sqlite */,
+				F7C280D729F4E3E500443F05 /* db.sqlite */,
 				F7C280CC29F4C9D700443F05 /* WorkoutItem.swift */,
 			);
 			path = Model;
@@ -167,7 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7C280C229F4C6C400443F05 /* Preview Assets.xcassets in Resources */,
-				F7C280D029F4CFA400443F05 /* db.sqlite in Resources */,
+				F7C280D829F4E3E500443F05 /* db.sqlite in Resources */,
 				F7C280BF29F4C6C400443F05 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
