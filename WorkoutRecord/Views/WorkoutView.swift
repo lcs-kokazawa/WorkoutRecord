@@ -4,15 +4,17 @@
 //
 //  Created by Kiho Okazawa on 2023-04-22.
 //
-
+import Blackbird
 import SwiftUI
 
 struct WorkoutView: View {
-    
     //MARK: Stored properties
     
     //The list of items to be completed
-    @State var WorkoutItems: [WorkoutItem] = excistingWorkoutItem
+    @BlackbirdLiveModels({ db in
+        try await WorkoutItem.read(from: db)
+    }) var workoutItems
+        
     
     //The workout currently being added
     @State var newworkDescription: String = ""
@@ -23,11 +25,11 @@ struct WorkoutView: View {
                 HStack {
                     TextField("Enter a workout", text: $newworkDescription)
                     Button(action: {
-                        let lastId = WorkoutItems.last!.id
-                        
-                        let newId = lastId + 1
-                        
-                        let newWorkoutItem = WorkoutItem(id: newId, description: newworkDescription, completed: false)
+//                        let lastId = workoutItems.last!.id
+//
+//                        let newId = lastId + 1
+//
+//                        let newWorkoutItem = WorkoutItem(id: newId, description: newworkDescription, completed: false)
                     }, label: {
                         Text("Add")
                             .font(.caption)
@@ -35,7 +37,7 @@ struct WorkoutView: View {
                 }
                 .padding(20)
                 
-                List(WorkoutItems) { currentItem in
+                List(workoutItems.results) { currentItem in
                     Label(title:  {
                         Text(currentItem.description)
                     }, icon: {
