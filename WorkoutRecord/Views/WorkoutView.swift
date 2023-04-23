@@ -18,7 +18,7 @@ struct WorkoutView: View {
     @BlackbirdLiveModels({ db in
         try await WorkoutItem.read(from: db)
     }) var workoutItems
-        
+    
     
     //The workout currently being added
     @State var newworkDescription: String = ""
@@ -40,11 +40,11 @@ struct WorkoutView: View {
                             
                             newworkDescription = ""
                         }
-//                        let lastId = workoutItems.last!.id
-//
-//                        let newId = lastId + 1
-//
-//                        let newWorkoutItem = WorkoutItem(id: newId, description: newworkDescription, completed: false)
+                        //                        let lastId = workoutItems.last!.id
+                        //
+                        //                        let newId = lastId + 1
+                        //
+                        //                        let newWorkoutItem = WorkoutItem(id: newId, description: newworkDescription, completed: false)
                     }, label: {
                         Text("Add")
                             .font(.caption)
@@ -52,17 +52,30 @@ struct WorkoutView: View {
                 }
                 .padding(20)
                 
-                List(workoutItems.results) { currentItem in
-                    Label(title:  {
-                        Text(currentItem.description)
-                    }, icon: {
-                        if currentItem.completed == true {
-                            Image(systemName: "checkmark.circle")
-                        } else {
-                            Image(systemName: "circle")
+                List {
+                    ForEach(workoutItems.results) { currentItem in
+                        Label(title:  {
+                            Text(currentItem.description)
+                        }, icon: {
+                            if currentItem.completed == true {
+                                Image(systemName: "checkmark.circle")
+                            } else {
+                                Image(systemName: "circle")
+                            }
+                        })
+                        .onTapGesture {
+                            Task {
+                                try await db!.transaction { core in
+                                    try core.query("UPDATE TodoItem SET completed = (?) WHERE id = (?)",
+                                                   !currentItem.completed,
+                                                   currentItem.id)
+                                }
+                            }
                         }
-                    })
+                    }
                 }
+                
+                
                 
             }
             .navigationTitle("Workout List")
